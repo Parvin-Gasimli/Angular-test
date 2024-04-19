@@ -3,17 +3,18 @@ import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { ApihelperService } from '../apihelper.service';
 import { CommonModule } from '@angular/common';
+import { HeaderComponent } from '../layout/header/header.component';
+import { FooterComponent } from '../layout/footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule,HeaderComponent,FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
-
-
-
 })
+
+
 export class HomeComponent implements OnInit {
   title = 'Home';
   text = 'This is the home page.';
@@ -21,7 +22,8 @@ export class HomeComponent implements OnInit {
   message: string = 'message from home component';
   isLoading:boolean = false;
   isError:boolean = false;
-  
+
+
   constructor(
     private router: Router,
     private apiService: ApihelperService,
