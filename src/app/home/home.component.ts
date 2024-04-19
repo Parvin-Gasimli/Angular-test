@@ -20,6 +20,7 @@ export class HomeComponent implements OnInit {
   posts: any[] = []
   message: string = 'message from home component';
   isLoading:boolean = false;
+  isError:boolean = false;
   
   constructor(
     private router: Router,
@@ -28,10 +29,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
+
     this.apiService.get("https://jsonplaceholder.typicode.com/posts").subscribe((response:any) => {
       this.posts = response;
       this.isLoading = false;
-    })
+    }, (error) => {
+      this.isError = true;
+      this.isLoading = false;
+    }
+    );
   }
 
   onClick() {
