@@ -1,13 +1,10 @@
-<div>
+<div class="container_lg">
   <h1>Hello Angular</h1>
-
   <div class="nav">
     <button class="btn" (click)="onClick()">Click me!</button>
     <button class="btn" (click)="onNavigate()">Navigate to about</button>
     <button class=" btn btn__success">Create New</button>
-  </div>
-
- 
+  </div> 
   <div>
     <div class="flex" *ngIf="isError">
       <p>Something went wrong!</p>
