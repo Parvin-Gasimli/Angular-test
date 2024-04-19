@@ -1,18 +1,25 @@
+<div>
+  <h1>Hello Angular</h1>
 
-<h1>Hello Angular</h1>
+  <div class="nav">
+    <button class="btn" (click)="onClick()">Click me!</button>
+    <button class="btn" (click)="onNavigate()">Navigate to about</button>
+  </div>
 
-<div class="nav">
-        <button class="btn" (click)="onClick()">Click me!</button>      
-        <button class="btn" (click)="onNavigate()">Navigate to about</button>
+  <div class="content">
+    <p>{{ message }}</p>
+  </div>
+  <div class="flex" *ngIf="isLoading">
+    <img src='https://media.giphy.com/media/3oEjI6SIIHBdRxXI40/giphy.gif' />
+  </div>
+
+
+  <div class="posts">
+    <div *ngFor="let item of posts">
+      <div class="posts__items">
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.body }}</p>
+      </div>
+    </div>
+  </div>
 </div>
-
-<div class="content">
-    <p>{{message}}</p>
-</div>
-
-<div *ngFor="let item of posts">
-
-        <h2>{{item.title}}</h2>
-        <p>{{item.body}}</p>
-</div>
-

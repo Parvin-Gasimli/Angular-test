@@ -2,14 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { ApihelperService } from '../apihelper.service';
-import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
+
 
 
 })
@@ -18,18 +19,19 @@ export class HomeComponent implements OnInit {
   text = 'This is the home page.';
   posts: any[] = []
   message: string = 'message from home component';
+  isLoading:boolean = false;
+  
   constructor(
     private router: Router,
     private apiService: ApihelperService,
-  ) { 
-      
-  }
+  ) { }
 
   ngOnInit() {
-    const response=this.apiService.get('https://jsonplaceholder.typicode.com/posts').subscribe((data: any) => {
-      this.posts = data; 
-    });
-    return response;
+    this.isLoading = true;
+    this.apiService.get("https://jsonplaceholder.typicode.com/posts").subscribe((response:any) => {
+      this.posts = response;
+      this.isLoading = false;
+    })
   }
 
   onClick() {
