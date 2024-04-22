@@ -9,7 +9,7 @@ import { FooterComponent } from '../layout/footer/footer.component';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,HeaderComponent,FooterComponent],
+  imports: [RouterOutlet, CommonModule,],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
