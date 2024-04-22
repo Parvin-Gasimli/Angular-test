@@ -3,42 +3,36 @@ import { RouterOutlet } from '@angular/router';
 import { Router } from '@angular/router';
 import { ApihelperService } from '../apihelper.service';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../layout/header/header.component';
-import { FooterComponent } from '../layout/footer/footer.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,],
+  imports: [RouterOutlet, CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss',
 })
-
-
 export class HomeComponent implements OnInit {
   title = 'Home';
   text = 'This is the home page.';
-  posts: any[] = []
+  posts: any[] = [];
   message: string = 'message from home component';
-  isLoading:boolean = false;
-  isError:boolean = false;
+  isLoading: boolean = false;
+  isError: boolean = false;
 
-
-  constructor(
-    private router: Router,
-    private apiService: ApihelperService,
-  ) { }
+  constructor(private router: Router, private apiService: ApihelperService) {}
 
   ngOnInit() {
     this.isLoading = true;
 
-    this.apiService.get("https://jsonplaceholder.typicode.com/posts").subscribe((response:any) => {
-      this.posts = response;
-      this.isLoading = false;
-    }, (error) => {
-      this.isError = true;
-      this.isLoading = false;
-    }
+    this.apiService.get('https://jsonplaceholder.typicode.com/posts').subscribe(
+      (response: any) => {
+        this.posts = response;
+        this.isLoading = false;
+      },
+      (error) => {
+        this.isError = true;
+        this.isLoading = false;
+      }
     );
   }
 
@@ -47,9 +41,6 @@ export class HomeComponent implements OnInit {
   }
 
   onNavigate() {
-  this.router.navigate(['/about']);
+    this.router.navigate(['/about']);
   }
-
-  
-  
 }

@@ -8,8 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [RouterOutlet, HttpClientModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
-  providers: [ApihelperService]
+  providers: [ApihelperService],
 })
 export class AppComponent {
-  title = 'test';
+  title = 'hello world';
 }
